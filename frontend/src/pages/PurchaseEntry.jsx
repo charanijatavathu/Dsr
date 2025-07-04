@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const ITEMS_API = 'http://localhost:5000/api/items';
-const SALES_API = 'http://localhost:5000/api/sales';
+const ITEMS_API = import.meta.env.VITE_API_URL + '/items';
+const SALES_API = import.meta.env.VITE_API_URL + '/sales';
 
 export default function PurchaseEntry() {
   const [items, setItems] = useState([]);
