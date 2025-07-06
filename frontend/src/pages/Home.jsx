@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const SALES_API = 'http://localhost:5000/api/sales';
+const SALES_API = import.meta.env.VITE_API_URL + '/sales';
 
 const cards = [
   {

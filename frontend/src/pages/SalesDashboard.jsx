@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const SALES_API = 'http://localhost:5000/api/sales';
+const SALES_API = import.meta.env.VITE_API_URL + '/sales';
 
 function formatDate(date) {
   return date.toISOString().slice(0, 10);
