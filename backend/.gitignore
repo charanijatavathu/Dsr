@@ -1,0 +1,25 @@
+# Node.js dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS and IDE-specific files
+.DS_Store
+Thumbs.db
+
+# Optional: Ignore build or dist folder if you use a bundler like webpack or TypeScript
+dist/
+build/
+
+# Optional: Ignore coverage reports
+coverage/
+
+# Optional: Ignore editor settings
+.vscode/
+.idea/
