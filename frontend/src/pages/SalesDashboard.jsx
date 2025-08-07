@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const SALES_API = import.meta.env.VITE_API_URL + '/sales';
-
+console.log('Using SALES_API:', SALES_API);
 function formatDate(date) {
   return date.toISOString().slice(0, 10);
 }
