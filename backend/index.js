@@ -12,27 +12,31 @@ app.use(express.json());
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 
-// Connect to MongoDB
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.error('MongoDB connection error:', err));
+if (!MONGO_URI) {
+  console.error('❌ MONGO_URI not set in environment variables');
+  process.exit(1); // Exit the app if MONGO_URI is missing
+}
 
+// ✅ Updated MongoDB connection (no deprecated options)
+mongoose.connect(MONGO_URI)
+  .then(() => console.log('✅ MongoDB connected'))
+  .catch((err) => {
+    console.error('❌ MongoDB connection error:', err);
+    process.exit(1);
+  });
+
+// Routes
 const itemsRouter = require('./routes/items');
 const salesRouter = require('./routes/sales');
 
 app.use('/api/items', itemsRouter);
 app.use('/api/sales', salesRouter);
 
-// Placeholder routes
+// Test route
 app.get('/api', (req, res) => {
   res.send('Dsr_Kitchens API is running');
 });
 
-// TODO: Add /api/items and /api/sales routes
-
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-}); 
+  console.log(`🚀 Server running on port ${PORT}`);
+});
